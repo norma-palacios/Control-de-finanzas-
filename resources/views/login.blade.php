@@ -23,6 +23,12 @@
             </div>
         @endif
 
+        @if(session('mensaje'))
+            <div class="alert alert-success text-center">
+                {{ session('mensaje') }}
+            </div>
+        @endif
+
         <form action="{{ route('login.autenticar') }}" method="POST">
             @csrf
             <div class="mb-3">

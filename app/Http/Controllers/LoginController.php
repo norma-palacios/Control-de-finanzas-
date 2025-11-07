@@ -20,7 +20,8 @@ class LoginController extends Controller
                           ->first();
 
         if ($usuario) {
-            return view('inicio', ['usuario' => $usuario]);
+            session(['usuario' => $usuario]);
+            return redirect()->route('dashboard');
         } else {
             return back()->with('error', 'Usuario o contraseña incorrectos.');
         }

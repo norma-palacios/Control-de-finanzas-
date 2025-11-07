@@ -1,0 +1,28 @@
+.content-wrapper {
+    background-color: #f4f6f9;
+}
+
+.btn-dashboard {
+    width: 240px;
+    font-size: 1.1rem;
+    margin: 15px;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease-in-out;
+}
+.btn-dashboard:hover {
+    transform: translateY(-4px);
+}
+
+.btn-movimientos {
+    background-color: #2a9d8f;
+    color: white;
+}
+.btn-reportes {
+    background-color: #457b9d;
+    color: white;
+}
+.brand-text {
+    font-weight: bold;
+}

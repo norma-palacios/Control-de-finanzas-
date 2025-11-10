@@ -2,7 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+ 
 use App\Http\Controllers\ReporteController;
+use App\Http\Controllers\MovimientoController;
+
 
 Route::get('/', [LoginController::class, 'mostrarLogin'])->name('login.form');
 Route::post('/login', [LoginController::class, 'autenticar'])->name('login.autenticar');
@@ -24,12 +27,17 @@ Route::get('/logout', function () {
     return redirect('/')->with('mensaje', 'Has cerrado sesión correctamente.');
 })->name('logout');
 
-Route::get('/movimientos', function () {
-    if (!session()->has('usuario')) {
-        return redirect('/')->with('error', 'Debes iniciar sesión.');
-    }
-    $usuario = session('usuario');
-    return view('movimientos', compact('usuario'));
-})->name('movimientos');
+// Middleware para proteger las rutas
+Route::middleware('web')->group(function () {
+
+    // Muestra formularios y tablas
+    Route::get('/movimientos', [MovimientoController::class, 'index'])->name('movimientos');
+    
+    // Procesa el formulario de entrada
+    Route::post('/movimientos/entrada', [MovimientoController::class, 'registrarEntrada'])->name('movimientos.entrada');
+
+    // Procesa el formulario de salida
+    Route::post('/movimientos/salida', [MovimientoController::class, 'registrarSalida'])->name('movimientos.salida');
+});
 
 Route::get('/reportes', [ReporteController::class, 'reporteMensual'])->name('reporteMensual');

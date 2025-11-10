@@ -69,9 +69,13 @@
 <div class="card mt-3">
     <div class="card-body">
         <h5>Gráfico de balance mensual Entradas vs Salidas</h5>
-        <canvas id="graficoBalance"></canvas>
+        <canvas width = "200px" id="graficoBalance"></canvas>
     </div>
-</div>
+</div> 
+<a href="{{ route('reportes.pdf', ['inicio' => $fechaInicio, 'fin' => $fechaFin]) }}" 
+   class="btn btn-danger mb-3" target="_blank">
+   <i class="fas fa-file-pdf"></i> Descargar PDF
+</a>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>

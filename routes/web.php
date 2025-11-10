@@ -41,3 +41,4 @@ Route::middleware('web')->group(function () {
 });
 
 Route::get('/reportes', [ReporteController::class, 'reporteMensual'])->name('reporteMensual');
+Route::get('/reportes/pdf', [ReporteController::class, 'exportarPDF'])->name('reportes.pdf');

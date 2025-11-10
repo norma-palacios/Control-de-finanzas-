@@ -7,7 +7,7 @@
   <a href="{{ route('movimientos') }}" class="btn btn-dashboard btn-movimientos">
     <i class="fas fa-arrow-right-arrow-left mr-2"></i> Entradas y Salidas
   </a>
-  <a href="{{ route('reportes') }}" class="btn btn-dashboard btn-reportes">
+  <a href="{{ route('reporteMensual') }}" class="btn btn-dashboard btn-reportes">
     <i class="fas fa-chart-line mr-2"></i> Reportes y Gráficos
   </a>
 @endsection

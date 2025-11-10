@@ -2,7 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+ 
+use App\Http\Controllers\ReporteController;
 use App\Http\Controllers\MovimientoController;
+
 
 Route::get('/', [LoginController::class, 'mostrarLogin'])->name('login.form');
 Route::post('/login', [LoginController::class, 'autenticar'])->name('login.autenticar');
@@ -37,10 +40,5 @@ Route::middleware('web')->group(function () {
     Route::post('/movimientos/salida', [MovimientoController::class, 'registrarSalida'])->name('movimientos.salida');
 });
 
-Route::get('/reportes', function () {
-    if (!session()->has('usuario')) {
-        return redirect('/')->with('error', 'Debes iniciar sesión.');
-    }
-    $usuario = session('usuario');
-    return view('reportes', compact('usuario'));
-})->name('reportes');
+Route::get('/reportes', [ReporteController::class, 'reporteMensual'])->name('reporteMensual');
+Route::get('/reportes/pdf', [ReporteController::class, 'exportarPDF'])->name('reportes.pdf');

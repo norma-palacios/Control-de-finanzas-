@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ReporteController;
 
 Route::get('/', [LoginController::class, 'mostrarLogin'])->name('login.form');
 Route::post('/login', [LoginController::class, 'autenticar'])->name('login.autenticar');
@@ -31,10 +32,4 @@ Route::get('/movimientos', function () {
     return view('movimientos', compact('usuario'));
 })->name('movimientos');
 
-Route::get('/reportes', function () {
-    if (!session()->has('usuario')) {
-        return redirect('/')->with('error', 'Debes iniciar sesión.');
-    }
-    $usuario = session('usuario');
-    return view('reportes', compact('usuario'));
-})->name('reportes');
+Route::get('/reportes', [ReporteController::class, 'reporteMensual'])->name('reporteMensual');

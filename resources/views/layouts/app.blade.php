@@ -63,7 +63,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('reportes') }}" class="nav-link {{ request()->is('reportes') ? 'active' : '' }}">
+            <a href="{{ route('reporteMensual') }}" class="nav-link {{ request()->is('reportes') ? 'active' : '' }}">
               <i class="nav-icon fas fa-chart-line"></i>
               <p>Reportes y Gráficos</p>
             </a>
